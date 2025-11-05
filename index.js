@@ -30,5 +30,18 @@ app.post("/location", async (req, res) => {
   }
 });
 
+app.get("/locations", async (req, res) => {
+  try {
+    const result = await pool.query(
+      "SELECT uid, latitude, longtitude, timestamp FROM locations ORDER BY id DESC LIMIT 500"
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Database error");
+  }
+});
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
