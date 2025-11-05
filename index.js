@@ -12,16 +12,16 @@ app.get("/", (req, res) => {
 
 // API to receive location data
 app.post("/location", async (req, res) => {
-  const { latitude, longitude, timestamp } = req.body;
+  const { latitude, longtitude, timestamp } = req.body;
 
-  if (!latitude || !longitude || !timestamp) {
+  if (!latitude || !longtitude || !timestamp) {
     return res.status(400).send("Missing required fields");
   }
 
   try {
     await pool.query(
       "INSERT INTO locations (uid, latitude, longtitude, timestamp) VALUES (1, $1, $2, to_timestamp($3 / 1000.0))",
-      [latitude, longitude, timestamp]
+      [latitude, longtitude, timestamp]
     );
     res.sendStatus(200);
   } catch (err) {
