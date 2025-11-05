@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import pool from "./db.js";
+import cors from "cors";
 
 const app = express();
 app.use(
@@ -8,9 +9,7 @@ app.use(
     origin: "*", // Allow all origins — change later if needed
   })
 );
-
-// ✅ Allow JSON body
-app.use(express.json());
+app.use(bodyParser.json());
 
 // Simple route to test
 app.get("/", (req, res) => {
