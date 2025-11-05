@@ -20,7 +20,7 @@ app.post("/location", async (req, res) => {
 
   try {
     await pool.query(
-      "INSERT INTO locations (uid, latitude, longitude, timestamp) VALUES (1, $1, $2, to_timestamp($3 / 1000.0))",
+      "INSERT INTO locations_2 (uid, latitude, longitude, timestamp) VALUES (1, $1, $2, to_timestamp($3 / 1000.0))",
       [latitude, longitude, timestamp]
     );
     res.sendStatus(200);
