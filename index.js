@@ -3,7 +3,14 @@ import bodyParser from "body-parser";
 import pool from "./db.js";
 
 const app = express();
-app.use(bodyParser.json());
+app.use(
+  cors({
+    origin: "*", // Allow all origins — change later if needed
+  })
+);
+
+// ✅ Allow JSON body
+app.use(express.json());
 
 // Simple route to test
 app.get("/", (req, res) => {
