@@ -33,7 +33,7 @@ app.post("/location", async (req, res) => {
 app.get("/locations", async (req, res) => {
   try {
     const result = await pool.query(
-      "SELECT uid, latitude, longtitude, timestamp FROM locations ORDER BY id DESC LIMIT 500"
+      "SELECT uid, latitude, longtitude, timestamp FROM loc_3 ORDER BY id DESC LIMIT 500"
     );
     const formatted = result.rows.map((row) => ({
       ...row,
